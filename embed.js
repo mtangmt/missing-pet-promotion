@@ -1,4 +1,3 @@
-   document.addEventListener("DOMContentLoaded", function() {
         let backgroundColor = document.getElementsByTagName("background-color").length>0?document.getElementsByTagName("background-color")[0].outerText: "#E3CCAE";
         let headerColor =document.getElementsByTagName("header-color").length>0?document.getElementsByTagName("header-color")[0].outerText:"#000000";
         let zipCode = document.getElementsByTagName("zipcode").length>0?document.getElementsByTagName("zipcode")[0].outerText:"20871";
@@ -8,9 +7,8 @@
                 zipCode:zipCode
             };
             fetchData(config);
-    });
    function fetchData (config) {
-        fetch('https://raw.githubusercontent.com/jonkiky/DogAds/dev2/data.json')
+        fetch('https://raw.githubusercontent.com/jonkiky/DogAds/dev3/data.json')
   .then(response => response.json())
   .then(data =>{
         let container = document.getElementById("missing-pet-ads");
