@@ -555,6 +555,7 @@ a:focus {
   color: #fdfdfe;
 }
 
-
-
+#about_top_container {
+  background-color: #E5B73B !important;
+}
 /* end footer section*/
