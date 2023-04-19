@@ -2,13 +2,13 @@
         let backgroundColor = document.getElementsByTagName("background-color").length>0?document.getElementsByTagName("background-color")[0].outerText: "#E3CCAE";
         let headerColor =document.getElementsByTagName("header-color").length>0?document.getElementsByTagName("header-color")[0].outerText:"#000000";
         let zipCode = document.getElementsByTagName("zipcode").length>0?document.getElementsByTagName("zipcode")[0].outerText:"20871";
-        let header = document.getElementsByTagName("header").length>0?document.getElementsByTagName("header")[0].outerText:"Missing";
+        let style = document.getElementsByTagName("theme").length>0?document.getElementsByTagName("theme")[0].outerText:"1";
         let desc = document.getElementsByTagName("desc").length>0?document.getElementsByTagName("desc")[0].outerText:"Have you seen this pet";
             let config = {
                 backgroundColor:backgroundColor,
                 headerColor:headerColor,
                 zipCode:zipCode,
-                header:header,
+                style:style,
                 desc:desc
             };
             fetchData(config);
@@ -18,11 +18,26 @@
   .then(data =>{
         let container = document.getElementById("missing-pet-ads");
         container.style.backgroundColor =config.backgroundColor;
+        header = `<svg viewBox="0 0 72 16">
+          <text x="0" y="15" fill="`+config.headerColor+`">MISSING</text>
+        </svg>`
+
+        if(config.style =="2"){
+           header = `<svg viewBox="0 0 110 20">
+          <text x="0" y="18" fill="`+config.headerColor+`">404 MISSING</text>
+        </svg>`
+        }
+
+        if(config.style =="3"){
+           header = `<svg viewBox="0 0 125 22">
+          <text x="0" y="18" fill="`+config.headerColor+`">404 NO FOUND</text>
+        </svg>`
+        }
+
+
         html_content= `<a id="missing-pet-link" href="`+data.link+`" target="_blank" style="text-decoration: none;">
       <div style="font-family: Space Grotesk,-apple-system,BlinkMacSystemFont,Athletics,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif; text-align: left;vertical-align: middle; font-weight: 800; margin-bottom: 10px ">
-        <svg viewBox="0 0 118 22">
-          <text x="0" y="18" fill="`+config.headerColor+`">`+config.header+`</text>
-        </svg>
+        `+header+`
     </div>
       <div style="margin: 5px; border: 5px solid #fff; position: relative; max-height: 300px; overflow: scroll;" >
         <img id="missing-pet-img" src="`+data.img+`" width="100%">
