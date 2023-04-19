@@ -9,7 +9,7 @@
             };
             fetchData(config);
    function fetchData (config) {
-        fetch('https://raw.githubusercontent.com/jonkiky/DogAds/dev3/data.json')
+        fetch('https://raw.githubusercontent.com/jonkiky/missing-pet-promotion/main/data.json')
   .then(response => response.json())
   .then(data =>{
         let container = document.getElementById("missing-pet-ads");
